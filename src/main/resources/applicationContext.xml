@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:cache="http://www.springframework.org/schema/cache" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd 
+		http://www.springframework.org/schema/task 
+    	http://www.springframework.org/schema/task/spring-task-3.0.xsd
+    	 http://www.springframework.org/schema/cache 
+    	 http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<!-- 数据库连接池 :dataSource --><!-- destroy-method="close" -->
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/play?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="user" value="root" />
+		<property name="password" value="root" />
+		<property name="minPoolSize" value="50" />
+		<property name="maxPoolSize" value="100" />
+		<property name="maxIdleTime" value="1800" />
+		<property name="acquireIncrement" value="2" />
+		<property name="maxStatements" value="0" />
+		<property name="initialPoolSize" value="2" />
+		<property name="idleConnectionTestPeriod" value="1800" />
+		<property name="acquireRetryAttempts" value="30" />
+		<property name="breakAfterAcquireFailure" value="true" />
+		<property name="testConnectionOnCheckout" value="false" />
+	</bean>  -->
+	<import resource="classpath:applicationContext-aop.xml" />
+	<import resource="classpath:applicationContext-redis.xml" />
+	<import resource="classpath:applicationContext-activemq.xml" />
+	<context:property-placeholder location="classpath:application.properties"/><!-- 加载配置文件 -->  
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<!-- 必须的配置 -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="defaultAutoCommit" value="false" />
+		<!-- 可选配置
+		连接池启动时创建的初始化连接数量（默认值为0） -->
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<!-- 连接池中最大的空闲的连接数，超过的空闲连接将被释放，如果设置为负数表示不限制（默认为8个，maxIdle不能设置太小， 因为假如在高负载的情况下，连接的打开时间比关闭的时间快，会引起连接池中idle的个数 
+			上升超过maxIdle，而造成频繁的连接销毁和创建，类似于jvm参数中的Xmx设置) -->
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<!-- 连接池中最小的空闲的连接数，低于这个数量会被创建新的连接（默认为0，调整为5，该参数越接近maxIdle，性能越好， 因为连接的创建和销毁，都是需要消耗资源的； 
+			但是不能太大，因为在机器很空闲的时候，也会创建低于minidle个数的连接，类似于jvm参数中的Xmn设置） -->
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<!-- 并发连接的最大数。设置为0则无限制 -->
+		<property name="maxTotal" value="${jdbc.maxTotal}" />
+		<!-- 等待连接的最大连接的时间,以毫秒计 -->
+		<property name="maxWaitMillis" value="${jdbc.maxWaitMillis}" />
+		<!-- SQL查询,用来验证从连接池取出的连接,在将连接返回给调用者之前. -->
+		<!-- <property name="validationQuery" value="select sysdate from dual" /> -->
+		<!-- 指明是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个 -->
+		<property name="testOnBorrow" value="true" />
+	</bean> 
+
+	<!-- 数据库配置SqlSessionFactoryBean -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.dao" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 如果存在一个事务，则支持当前事务。如果没有事务则开启 -->
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+<!-- 在xml配置了这个标签后，spring可以自动去扫描base-pack下面或者子包下面的java文件，
+如果扫描到有@Component @Controller@Service等这些注解的类，则把这些类注册为bean
+注意：如果配置了<context:component-scan>那么<context:annotation-config/>标签就可以不用再xml中配置了，
+因为前者包含了后者。另外<context:component-scan>还提供了两个子标签
+1.        <context:include-filter>
+2.       <context:exclude-filter>
+在说明这两个子标签前，先说一下<context:component-scan>有一个use-default-filters属性，改属性默认为true,
+这就意味着会扫描指定包下的全部的标有@Component的类，并注册成bean.也就是@Component的子注解@Service,@Reposity等。
+所以如果仅仅是在配置文件中这么写
+<context:component-scan base-package="tv.huan.weisp.web"/>
+ Use-default-filter此时为true那么会对base-package包或者子包下的所有的进行java类进行扫描,并把匹配的java类注册成bean。
+ 可以发现这种扫描的粒度有点太大，如果你只想扫描指定包下面的Controller，该怎么办？此时子标签<context:incluce-filter>就起到了勇武之地。
+ 如下所示
+<context:component-scan base-package="tv.huan.weisp.web .controller">  
+<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>   
+</context:component-scan>  
+这样就会只扫描base-package指定下的有@Controller下的java类，并注册成bean
+但是因为use-dafault-filter在上面并没有指定，默认就为true，所以当把上面的配置改成如下所示的时候，就会产生与你期望相悖的结果
+（注意base-package包值得变化）
+<context:component-scan base-package="tv.huan.weisp.web">  
+<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>   
+</context:component-scan>  
+此时，spring不仅扫描了@Controller，还扫描了指定包所在的子包service包下注解@Service的java类
+此时指定的include-filter没有起到作用，只要把use-default-filter设置成false就可以了。
+这样就可以避免在base-packeage配置多个包名这种不是很优雅的方法来解决这个问题了。
+另外在我参与的项目中可以发现在base-package指定的包中有的子包是不含有注解了，
+所以不用扫描，此时可以指定<context:exclude-filter>来进行过滤，说明此包不需要被扫描。综合以上说明
+Use-dafault-filters=”false”的情况下：<context:exclude-filter>指定的不扫描，<context:include-filter>指定的扫描 -->
+	<context:component-scan base-package="com.service,com.compoent"/>
+	
+	<!-- 以AspectJ方式 定义 事务 -->
+	<aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(* com.service..*.*(..))"
+			advice-ref="txAdvice" order="2" />
+	</aop:config>
+
+	<!-- 配置事务传播特性:如果存在一个事务，则支持当前事务。如果没有事务则开启：REQUIRED -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="delete*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="exec*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="insert*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="merge*" propagation="REQUIRED"
+				rollback-for="Exception" />
+			<tx:method name="batch*" propagation="REQUIRED"
+				rollback-for="Exception" />
+
+			<tx:method name="add*Atom" propagation="REQUIRES_NEW"
+				rollback-for="Exception" />
+			<tx:method name="update*Atom" propagation="REQUIRES_NEW"
+				rollback-for="Exception" />
+			<tx:method name="save*Atom" propagation="REQUIRES_NEW"
+				rollback-for="Exception" />
+			<tx:method name="delete*Atom" propagation="REQUIRES_NEW"
+				rollback-for="Exception" />
+			<tx:method name="*Atom" propagation="REQUIRES_NEW"
+				rollback-for="Exception" />
+
+			<tx:method name="get*" propagation="SUPPORTS" rollback-for="Exception" />
+			<tx:method name="count*" propagation="SUPPORTS"
+				rollback-for="Exception" />
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- ehcache配置 -->
+	 <!--声明一个缓存管理器（EhCacheCacheManager） 这里的实现代码是通过传入EhCache的CacheManager实例实现的 --> 
+	<bean id="ehcache"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:ehcache.xml" />
+	</bean>
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+	 <!-- 指定 ehcache配置文件路径-->
+		<property name="cacheManager" ref="ehcache" />
+	</bean>
+	<!--启用注解驱动缓存   -->
+	<cache:annotation-driven cache-manager="cacheManager" />
+
+</beans>
