@@ -1,8 +1,5 @@
 package com.utils.excelhelper.write.sheet;
 
-
-
-
 import com.utils.excelhelper.write.row.RowContext;
 import com.utils.excelhelper.write.row.RowFactory;
 import com.utils.excelhelper.write.workbook.WorkbookContext;
@@ -24,7 +21,6 @@ public class SheetContext {
         this.workbookContext = workbookContext;
         this.sheet = sheet;
     }
-
 
     public RowContext nextRow() {
         ++index;

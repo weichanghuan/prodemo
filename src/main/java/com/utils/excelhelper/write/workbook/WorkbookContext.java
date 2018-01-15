@@ -5,7 +5,6 @@ import com.utils.excelhelper.write.sheet.SheetContext;
 import com.utils.excelhelper.write.style.StyleConfiguration;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
 import org.apache.poi.ss.usermodel.Workbook;
 
 /**
@@ -26,7 +25,8 @@ public class WorkbookContext {
     /**
      * 创建Sheet
      *
-     * @param sheetName sheet名
+     * @param sheetName
+     *            sheet名
      */
     public SheetContext createSheet(String sheetName) {
         return new SheetContext(this, workbook.createSheet(sheetName));
@@ -39,11 +39,11 @@ public class WorkbookContext {
         return new SheetContext(this, workbook.createSheet());
     }
 
-
     /**
      * 创建名称为空的Sheet并生成header行
      *
-     * @param headerArray 表头数组
+     * @param headerArray
+     *            表头数组
      */
     public SheetContext createSheetAndHeader(String... headerArray) {
 
