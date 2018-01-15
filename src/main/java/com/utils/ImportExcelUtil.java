@@ -20,6 +20,8 @@ import java.util.Iterator;
 import java.util.List;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -229,16 +231,20 @@ public class ImportExcelUtil {
             return null;
         }
         /*
+         * cell.setCellType(Cell.CELL_TYPE_STRING); String value =
+         * cell.getStringCellValue(); if (StringUtil.isBlank(value)) { return
+         * null; } else { return value; }
+         */
+        /*
          * if (cell == null) { return ""; }
          */
         // 如果该单元格为数字， 则设置该单元格类型为文本格式
-        /*
-         * CellStyle cellStyle = wb.createCellStyle(); DataFormat dataFormat =
-         * wb.createDataFormat();
-         * cellStyle.setDataFormat(dataFormat.getFormat("@"));
-         * cell.setCellStyle(cellStyle);
-         * cell.setCellType(Cell.CELL_TYPE_STRING);
-         */
+
+        CellStyle cellStyle = wb.createCellStyle();
+        DataFormat dataFormat = wb.createDataFormat();
+        cellStyle.setDataFormat(dataFormat.getFormat("@"));
+        cell.setCellStyle(cellStyle);
+        cell.setCellType(Cell.CELL_TYPE_STRING);
 
         DecimalFormat df = new DecimalFormat("0");// 格式化 number String字符
         // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");// 格式化日期字符串
