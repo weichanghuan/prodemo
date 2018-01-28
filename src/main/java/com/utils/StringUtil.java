@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author jack.liu 对字符串操作.
+ * @author 危常焕 对字符串操作.
  */
 public class StringUtil {
     private StringUtil() {

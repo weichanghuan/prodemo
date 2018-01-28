@@ -9,22 +9,22 @@ import java.io.OutputStream;
 
 /**
  * 
- * @description:(�ļ�����������)
+ * @description:(文件操作工具类)
  * @author weichanghuan
- * @date 2017��10��9�� ����10:27:47
+ * @date 2017年10月9日 下午10:27:47
  * @since JDK 1.6
  */
 public class FileUtils {
 
     /**
      * 
-     * getFiles:(�õ��ļ������е��ļ���)
+     * getFiles:(得到文件下所有的文件名)
      * 
-     * @param �ļ�·��
+     * @param 文件路径
      * @return
      * @throws IOException
      * @author weichanghuan
-     * @date 2017��10��9�� ����10:31:38
+     * @date 2017年10月9日 下午10:31:38
      */
     @SuppressWarnings("unused")
     private static String[] getFiles(String folder) throws IOException {
@@ -41,14 +41,14 @@ public class FileUtils {
 
     /**
      * 
-     * deleteAll:(ɾ���ļ��������ļ��к��ļ�) ��fileNameΪ����ɾ���ļ������������ļ�
+     * deleteAll:(删除文件夹下子文件夹和文件) 若fileName为空则，删除文件夹下面所有文件
      * 
      * @param file
-     *            �ļ�·��
+     *            文件路径
      * @param fileName
-     *            �ļ���
+     *            文件名
      * @author weichanghuan
-     * @date 2017��10��9�� ����10:33:58
+     * @date 2017年10月9日 下午10:33:58
      */
     public static void deleteFiles(File file, String fileName) {
         if (!file.exists()) {
@@ -72,14 +72,14 @@ public class FileUtils {
 
     /**
      * 
-     * deleteAll:(TODO ������һ�仰�����������������)
+     * deleteAll:(TODO 这里用一句话描述这个方法的作用)
      * 
      * @param file
-     *            �ļ�·��
+     *            文件路径
      * @param fileNames
-     *            ����ɾ���ļ�
+     *            批量删除文件
      * @author weichanghuan
-     * @date 2017��10��9�� ����10:40:04
+     * @date 2017年10月9日 下午10:40:04
      */
     public static void deleteFileArrays(File file, String[] fileNames) {
         if (!file.exists()) {
@@ -106,40 +106,40 @@ public class FileUtils {
 
     /**
      * 
-     * ɾ�������ļ�
+     * 删除单个文件
      * 
      * @param fileName
-     *            ��ɾ�����ļ���
-     * @return ���ɾ���ɹ����򷵻�true�����򷵻�false
+     *            被删除的文件名
+     * @return 如果删除成功，则返回true，否则返回false
      */
     public static boolean deleteFile(String fileName) {
         File file = new File(fileName);
         if (file.exists() && file.isFile()) {
             if (file.delete()) {
-                System.out.println("ɾ���ļ� " + fileName + " �ɹ�!");
+                System.out.println("删除文件 " + fileName + " 成功!");
                 return true;
             } else {
-                System.out.println("ɾ���ļ� " + fileName + " ʧ��!");
+                System.out.println("删除文件 " + fileName + " 失败!");
                 return false;
             }
         } else {
-            System.out.println(fileName + " �ļ�������!");
+            System.out.println(fileName + " 文件不存在!");
             return true;
         }
     }
 
     /**
      * 
-     * ɾ���ļ�������ɾ�������ļ����ļ���
+     * 删除文件，可以删除单个文件或文件夹
      * 
      * @param fileName
-     *            ��ɾ�����ļ���
-     * @return ���ɾ���ɹ����򷵻�true�����Ƿ���false
+     *            被删除的文件名
+     * @return 如果删除成功，则返回true，否是返回false
      */
     public static boolean delFile(String fileName) {
         File file = new File(fileName);
         if (!file.exists()) {
-            System.out.println(fileName + " �ļ�������!");
+            System.out.println(fileName + " 文件不存在!");
             return true;
         } else {
             if (file.isFile()) {
@@ -152,11 +152,11 @@ public class FileUtils {
 
     /**
      * 
-     * ɾ��Ŀ¼��Ŀ¼�µ��ļ�
+     * 删除目录及目录下的文件
      * 
      * @param dirName
-     *            ��ɾ����Ŀ¼���ڵ��ļ�·��
-     * @return ���Ŀ¼ɾ���ɹ����򷵻�true�����򷵻�false
+     *            被删除的目录所在的文件路径
+     * @return 如果目录删除成功，则返回true，否则返回false
      */
     public static boolean deleteDirectory(String dirName) {
         String dirNames = dirName;
@@ -165,25 +165,25 @@ public class FileUtils {
         }
         File dirFile = new File(dirNames);
         if (!dirFile.exists() || !dirFile.isDirectory()) {
-            System.out.println(dirNames + " Ŀ¼������!");
+            System.out.println(dirNames + " 目录不存在!");
             return true;
         }
         boolean flag = true;
-        // �г�ȫ���ļ�����Ŀ¼
+        // 列出全部文件及子目录
         File[] files = dirFile.listFiles();
         for (int i = 0; i < files.length; i++) {
-            // ɾ�����ļ�
+            // 删除子文件
             if (files[i].isFile()) {
                 flag = FileUtils.deleteFile(files[i].getAbsolutePath());
-                // ���ɾ���ļ�ʧ�ܣ����˳�ѭ��
+                // 如果删除文件失败，则退出循环
                 if (!flag) {
                     break;
                 }
             }
-            // ɾ����Ŀ¼
+            // 删除子目录
             else if (files[i].isDirectory()) {
                 flag = FileUtils.deleteDirectory(files[i].getAbsolutePath());
-                // ���ɾ����Ŀ¼ʧ�ܣ����˳�ѭ��
+                // 如果删除子目录失败，则退出循环
                 if (!flag) {
                     break;
                 }
@@ -191,22 +191,22 @@ public class FileUtils {
         }
 
         if (!flag) {
-            System.out.println("ɾ��Ŀ¼ʧ��!");
+            System.out.println("删除目录失败!");
             return false;
         }
-        // ɾ����ǰĿ¼
+        // 删除当前目录
         if (dirFile.delete()) {
-            System.out.println("ɾ��Ŀ¼ " + dirName + " �ɹ�!");
+            System.out.println("删除目录 " + dirName + " 成功!");
             return true;
         } else {
-            System.out.println("ɾ��Ŀ¼ " + dirName + " ʧ��!");
+            System.out.println("删除目录 " + dirName + " 失败!");
             return false;
         }
 
     }
 
     /**
-     * �õ��ļ��Ĵ�С
+     * 得到文件的大小
      * 
      * @param fileName
      * @return
@@ -226,12 +226,12 @@ public class FileUtils {
     }
 
     /**
-     * ���Ƶ����ļ�
+     * 复制单个文件
      * 
      * @param srcFile
-     *            ����·����Դ�ļ� �磺E:/phsftp/src/abc.txt
+     *            包含路径的源文件 如：E:/phsftp/src/abc.txt
      * @param dirDest
-     *            Ŀ���ļ�Ŀ¼�����ļ�Ŀ¼���������Զ����� �磺E:/phsftp/dest
+     *            目标文件目录；若文件目录不存在则自动创建 如：E:/phsftp/dest
      * @throws IOException
      */
     public static void copyFile(String srcFile, String dirDest) {
@@ -248,23 +248,23 @@ public class FileUtils {
             out.close();
             in.close();
         } catch (Exception e) {
-            System.out.println("�����ļ���������:" + e.getMessage());
+            System.out.println("复制文件操作出错:" + e.getMessage());
             e.printStackTrace();
         }
     }
 
     /**
-     * �����ļ���
+     * 复制文件夹
      * 
      * @param oldPath
-     *            String Դ�ļ���·�� �磺E:/phsftp/src
+     *            String 源文件夹路径 如：E:/phsftp/src
      * @param newPath
-     *            String Ŀ���ļ���·�� �磺E:/phsftp/dest
+     *            String 目标文件夹路径 如：E:/phsftp/dest
      * @return boolean
      */
     public static void copyFolder(String oldPath, String newPath) {
         try {
-            // ����ļ��в����� ���½��ļ���
+            // 如果文件夹不存在 则新建文件夹
             mkdir(newPath);
             File file = new File(oldPath);
             String[] files = file.list();
@@ -288,21 +288,21 @@ public class FileUtils {
                     output.close();
                     input.close();
                 }
-                if (temp.isDirectory()) {// ��������ļ���
+                if (temp.isDirectory()) {// 如果是子文件夹
                     copyFolder(oldPath + "/" + files[i], newPath + "/" + files[i]);
                 }
             }
         } catch (Exception e) {
-            System.out.println("�����ļ��в�������:" + e.getMessage());
+            System.out.println("复制文件夹操作出错:" + e.getMessage());
             e.printStackTrace();
         }
     }
 
     /**
-     * ����Ŀ¼
+     * 创建目录
      * 
      * @param dir
-     *            Ŀ¼
+     *            目录
      */
     public static void mkdir(String dir) {
         try {
@@ -312,18 +312,18 @@ public class FileUtils {
                 dirPath.mkdir();
             }
         } catch (Exception e) {
-            System.out.println("����Ŀ¼��������: " + e.getMessage());
+            System.out.println("创建目录操作出错: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     /**
-     * �ƶ��ļ���ָ��Ŀ¼
+     * 移动文件到指定目录
      * 
      * @param oldPath
-     *            ����·�����ļ��� �磺E:/phsftp/src/ljq.txt
+     *            包含路径的文件名 如：E:/phsftp/src/ljq.txt
      * @param newPath
-     *            Ŀ���ļ�Ŀ¼ �磺E:/phsftp/dest
+     *            目标文件目录 如：E:/phsftp/dest
      */
     public static void moveFile(String oldPath, String newPath) {
         copyFile(oldPath, newPath);
@@ -331,12 +331,12 @@ public class FileUtils {
     }
 
     /**
-     * �ƶ��ļ���ָ��Ŀ¼������ɾ���ļ���
+     * 移动文件到指定目录，不会删除文件夹
      * 
      * @param oldPath
-     *            Դ�ļ�Ŀ¼ �磺E:/phsftp/src
+     *            源文件目录 如：E:/phsftp/src
      * @param newPath
-     *            Ŀ���ļ�Ŀ¼ �磺E:/phsftp/dest
+     *            目标文件目录 如：E:/phsftp/dest
      */
     public static void moveFiles(String oldPath, String newPath) {
         copyFolder(oldPath, newPath);
@@ -344,12 +344,12 @@ public class FileUtils {
     }
 
     /**
-     * �ƶ��ļ���ָ��Ŀ¼����ɾ���ļ���
+     * 移动文件到指定目录，会删除文件夹
      * 
      * @param oldPath
-     *            Դ�ļ�Ŀ¼ �磺E:/phsftp/src
+     *            源文件目录 如：E:/phsftp/src
      * @param newPath
-     *            Ŀ���ļ�Ŀ¼ �磺E:/phsftp/dest
+     *            目标文件目录 如：E:/phsftp/dest
      */
     public static void moveFolder(String oldPath, String newPath) {
         copyFolder(oldPath, newPath);
@@ -358,34 +358,34 @@ public class FileUtils {
 
     /**
      * 
-     * renameFile:(�ļ�������)
+     * renameFile:(文件重命名)
      * 
      * @param url
      * @param new_name
      * @return
      * @throws Exception
      * @author weichanghuan
-     * @date 2017��10��9�� ����11:03:58
+     * @date 2017年10月9日 下午11:03:58
      */
     public static boolean renameFile(String url, String new_name) throws Exception {
         String old_url = url;
         old_url = old_url.replace("\\", "/");
         File old_file = new File(old_url);
         if (!old_file.exists()) {
-            throw new IOException("�ļ�������ʧ�ܣ��ļ���" + old_file + "��������");
+            throw new IOException("文件重命名失败，文件（" + old_file + "）不存在");
         }
         System.out.println(old_file.exists());
 
         String old_name = old_file.getName();
-        // ��ø�·��
+        // 获得父路径
         String parent = old_file.getParent();
-        // ������
+        // 重命名
         String new_url = parent + "/" + new_name;
         File new_file = new File(new_url);
         old_file.renameTo(new_file);
 
-        System.out.println("ԭ�ļ���" + old_file.getName());
-        System.out.println("���ļ���" + new_file.getName());
+        System.out.println("原文件：" + old_file.getName());
+        System.out.println("新文件：" + new_file.getName());
         new_name = new_file.getName();
         old_name = old_file.getName();
         if (new_name.equals(old_name)) {
@@ -397,76 +397,76 @@ public class FileUtils {
     }
 
     /**
-     * ���Ƶ����ļ�
+     * 复制单个文件
      * 
      * @param srcFileName
-     *            �����Ƶ��ļ���
+     *            待复制的文件名
      * @param descFileName
-     *            Ŀ���ļ���
+     *            目标文件名
      * @param coverlay
-     *            ���Ŀ���ļ��Ѵ��ڣ��Ƿ񸲸�
-     * @return ������Ƴɹ����򷵻�true�����򷵻�false
+     *            如果目标文件已存在，是否覆盖
+     * @return 如果复制成功，则返回true，否则返回false
      */
     public static boolean copyFileCover(String srcFileName, String descFileName, boolean coverlay) {
         File srcFile = new File(srcFileName);
-        // �ж�Դ�ļ��Ƿ����
+        // 判断源文件是否存在
         if (!srcFile.exists()) {
-            System.out.println("�����ļ�ʧ�ܣ�Դ�ļ� " + srcFileName + " ������!");
+            System.out.println("复制文件失败，源文件 " + srcFileName + " 不存在!");
             return false;
         }
-        // �ж�Դ�ļ��Ƿ��ǺϷ����ļ�
+        // 判断源文件是否是合法的文件
         else if (!srcFile.isFile()) {
-            System.out.println("�����ļ�ʧ�ܣ�" + srcFileName + " ����һ���ļ�!");
+            System.out.println("复制文件失败，" + srcFileName + " 不是一个文件!");
             return false;
         }
         File descFile = new File(descFileName);
-        // �ж�Ŀ���ļ��Ƿ����
+        // 判断目标文件是否存在
         if (descFile.exists()) {
-            // ���Ŀ���ļ����ڣ�����������
+            // 如果目标文件存在，并且允许覆盖
             if (coverlay) {
-                System.out.println("Ŀ���ļ��Ѵ��ڣ�׼��ɾ��!");
+                System.out.println("目标文件已存在，准备删除!");
                 if (!FileUtils.delFile(descFileName)) {
-                    System.out.println("ɾ��Ŀ���ļ� " + descFileName + " ʧ��!");
+                    System.out.println("删除目标文件 " + descFileName + " 失败!");
                     return false;
                 }
             } else {
-                System.out.println("�����ļ�ʧ�ܣ�Ŀ���ļ� " + descFileName + " �Ѵ���!");
+                System.out.println("复制文件失败，目标文件 " + descFileName + " 已存在!");
                 return false;
             }
         } else {
             if (!descFile.getParentFile().exists()) {
-                // ���Ŀ���ļ����ڵ�Ŀ¼�����ڣ��򴴽�Ŀ¼
-                System.out.println("Ŀ���ļ����ڵ�Ŀ¼�����ڣ�����Ŀ¼!");
-                // ����Ŀ���ļ����ڵ�Ŀ¼
+                // 如果目标文件所在的目录不存在，则创建目录
+                System.out.println("目标文件所在的目录不存在，创建目录!");
+                // 创建目标文件所在的目录
                 if (!descFile.getParentFile().mkdirs()) {
-                    System.out.println("����Ŀ���ļ����ڵ�Ŀ¼ʧ��!");
+                    System.out.println("创建目标文件所在的目录失败!");
                     return false;
                 }
             }
         }
-        // ׼�������ļ�
-        // ��ȡ��λ��
+        // 准备复制文件
+        // 读取的位数
         int readByte = 0;
         InputStream ins = null;
         OutputStream outs = null;
         try {
-            // ��Դ�ļ�
+            // 打开源文件
             ins = new FileInputStream(srcFile);
-            // ��Ŀ���ļ��������
+            // 打开目标文件的输出流
             outs = new FileOutputStream(descFile);
             byte[] buf = new byte[1024];
-            // һ�ζ�ȡ1024���ֽڣ���readByteΪ-1ʱ��ʾ�ļ��Ѿ���ȡ���
+            // 一次读取1024个字节，当readByte为-1时表示文件已经读取完毕
             while ((readByte = ins.read(buf)) != -1) {
-                // ����ȡ���ֽ���д�뵽�����
+                // 将读取的字节流写入到输出流
                 outs.write(buf, 0, readByte);
             }
-            System.out.println("���Ƶ����ļ� " + srcFileName + " ��" + descFileName + "�ɹ�!");
+            System.out.println("复制单个文件 " + srcFileName + " 到" + descFileName + "成功!");
             return true;
         } catch (Exception e) {
-            System.out.println("�����ļ�ʧ�ܣ�" + e.getMessage());
+            System.out.println("复制文件失败：" + e.getMessage());
             return false;
         } finally {
-            // �ر���������������ȹر��������Ȼ���ٹر�������
+            // 关闭输入输出流，首先关闭输出流，然后再关闭输入流
             if (outs != null) {
                 try {
                     outs.close();
