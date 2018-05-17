@@ -1,12 +1,9 @@
 package com.compoent;
 
 import com.controller.ProcessorControllerAnnotation;
-import com.po.SysRoleResource;
 import com.service.SysRoleResourceService;
-import java.util.List;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
-import net.sf.ehcache.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +40,8 @@ public class ApplicationStartup implements ApplicationListener<ApplicationEvent>
         } else if (event instanceof ContextRefreshedEvent) {
             System.out.println(event.getClass().getSimpleName() + " 事件已发生！");
             logger.debug("------初始化执行----");
-            List<SysRoleResource> selectByAny = sysRoleResourceService.selectByAny(new SysRoleResource());
+            // List<SysRoleResource> selectByAny =
+            // sysRoleResourceService.selectByAny(new SysRoleResource());
             // 创建一个缓存管理器
             CacheManager singletonManager = CacheManager.create();
             // 建立一个缓存实例
@@ -56,10 +54,11 @@ public class ApplicationStartup implements ApplicationListener<ApplicationEvent>
             // Cache cache = singletonManager.getCache("testCache");
             Cache cache = singletonManager.getCache("testInfo");
             // 使用获取到的缓存实例
-            for (SysRoleResource sysRoleResource : selectByAny) {
-                Element element = new Element(sysRoleResource.getId(), sysRoleResource);
-                cache.put(element);// 添加缓存值
-            }
+            // for (SysRoleResource sysRoleResource : selectByAny) {
+            // Element element = new Element(sysRoleResource.getId(),
+            // sysRoleResource);
+            // cache.put(element);// 添加缓存值
+            // }
 
             int elementsInMemory = cache.getSize();// 获取缓存个数
             System.out.println("缓存个数=======" + elementsInMemory);
