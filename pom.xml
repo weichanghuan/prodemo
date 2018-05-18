@@ -384,40 +384,40 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         
         <!-- t-io -->
 	</dependencies>
-	
-	<!-- <build>
 
-        <finalName>MyArtifact</finalName>
-        <plugins>
-          <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF8</encoding>
-                </configuration>
-            </plugin>
-            For Maven Tomcat Plugin
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                or if you want to use tomcat 6.x <artifactId>tomcat6-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <server>Tomcat7</server> 与{tomcatHome}/conf/setting.xml 中的serverID相同
-                    <url>http://localhost:8080/manager/text</url>tomcat管理路径
-                    http port
-                    <port>8080</port>
-                    application path always starts with /
-                    <path>/MyArtifact</path>
-                    可以在该命令下启动tomcat时自动加载修改的class,而不用重新发布。
-                    <contextReloadable>true</contextReloadable>
-                    </configuration>
+	<build>
 
-            </plugin>
+		<finalName>MyArtifact</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF8</encoding>
+				</configuration>
+			</plugin>
+			<!-- For Maven Tomcat Plugin -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<!-- or if you want to use tomcat 6.x <artifactId>tomcat6-maven-plugin</artifactId> -->
+				<version>2.2</version>
+				<configuration>
+					<server>Tomcat7</server> <!-- 与{tomcatHome}/conf/setting.xml 中的serverID相同 -->
+					<url>http://localhost:8080/manager/text</url><!-- tomcat管理路径 -->
+					<!-- http port -->
+					<port>8080</port>
+					<!-- application path always starts with / -->
+					<path>/MyArtifact</path>
+					<!-- 可以在该命令下启动tomcat时自动加载修改的class,而不用重新发布。 -->
+					<contextReloadable>true</contextReloadable>
+				</configuration>
 
-        </plugins>
-    </build> -->
+			</plugin>
+
+		</plugins>
+	</build>
 </project>
