@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:wch="http://www.wch.com/schema/dataSources"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.wch.com/schema/dataSources
+		http://www.wch.com/schema/dataSources/dataSources.xsd">
+
+    <wch:datasource id="dataSources" url="jdbc:mysql://localhost:3309/demodb" userName="root" passWord="root" />
+</beans>
