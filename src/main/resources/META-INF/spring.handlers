@@ -1,1 +1,3 @@
-http\://www.wch.com/schema/dataSources=com.config.DataSourcesNamespaceHandler
+http\://www.wch.com/schema/dataSources=com.config.SourcesNamespaceHandler
+http\://www.wch.com/schema/testAop=com.config.SourcesNamespaceHandler
+
