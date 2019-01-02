@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.dbunit.database.AmbiguousTableNameException;
 import org.dbunit.dataset.DefaultDataSet;
 import org.dbunit.dataset.IDataSet;
@@ -31,7 +32,7 @@ public class MultiSchemaXlsDataSetReader {
             for (Map.Entry<String, List<ITable>> entry : tbMap.entrySet()) {
                 List<ITable> tables = entry.getValue();
                 try {
-                    DefaultDataSet ds = new DefaultDataSet(tables.toArray(new ITable[] {}));
+                    DefaultDataSet ds = new DefaultDataSet(tables.toArray(new ITable[]{}));
                     dataSets.setDataSetForSchema(entry.getKey(), ds);
                 } catch (AmbiguousTableNameException e) {
                     throw new UnitilsException("构造DataSet失败！", e);

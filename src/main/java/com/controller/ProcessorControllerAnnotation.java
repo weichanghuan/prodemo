@@ -7,10 +7,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 
+ * @author weichanghuan
  * @description:(TODO 请在此添加描述)
  * @reason:TODO ADD REASON(可选)
- * @author weichanghuan
  * @date 2017年5月24日 下午6:13:07
  * @since JDK 1.6
  */

@@ -9,13 +9,13 @@ import java.util.List;
 public class TestException {
 
     public void TestRuntimeException() {
-        List list=null;
+        List list = null;
         list.get(0);
         System.out.println("2");
     }
 
     public void testException() {
-       int i=1/0;
+        int i = 1 / 0;
 
         System.out.println("1");
     }

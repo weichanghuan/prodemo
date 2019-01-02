@@ -1,9 +1,11 @@
 package com.compoent;
 
 import com.utils.JSONUtil;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.UUID;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -12,11 +14,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
+ * @author 危常焕
  * @className HandlerServiceAspect
  * @description 接口类处理切面
- * @author 危常焕
  * @date 2015-3-23 下午5:24:31
- * 
  */
 @Service("handlerServiceAspect")
 public class HandlerServiceAspect {

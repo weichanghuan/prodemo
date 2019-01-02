@@ -3,6 +3,7 @@ package com.service.impl;
 import com.dao.SysRoleResourceMapper;
 import com.po.SysRoleResource;
 import com.service.SysRoleResourceService;
+
 import java.util.List;
 import javax.annotation.Resource;
 import javax.jms.Destination;
@@ -10,6 +11,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;

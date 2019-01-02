@@ -23,7 +23,7 @@ public class TestBean {
 
     @Bean
     public String getString(SysRoleResource sysRoleResource) {
-    	System.out.println(sysRoleResource.getId());
+        System.out.println(sysRoleResource.getId());
         return "2";
     }
 }

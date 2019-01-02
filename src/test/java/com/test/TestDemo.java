@@ -56,6 +56,8 @@ public class TestDemo extends BaseTest {
         SysRoleResource selectByPrimaryKey2 = sysRoleResourceEhcacheService.selectByPrimaryKey(8);
         System.out.println("查询所用时间" + (System.currentTimeMillis() - start1));
         System.out.println("第二次查询结束");
-    };
+    }
+
+    ;
 
 }

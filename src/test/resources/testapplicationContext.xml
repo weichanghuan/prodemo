@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:util="http://www.springframework.org/schema/util" 
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:task="http://www.springframework.org/schema/task"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context.xsd
@@ -19,74 +19,75 @@
 		http://www.springframework.org/schema/aop/spring-aop.xsd 
 		http://www.springframework.org/schema/task 
     	http://www.springframework.org/schema/task/spring-task-3.0.xsd">
-    	
-    	<!-- 数据库连接池 :dataSource -->
-		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" ><!-- destroy-method="close" -->
-   			<property name="driverClass" value="com.mysql.jdbc.Driver" />
-   			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/testunitils?useUnicode=true&amp;characterEncoding=UTF-8" />
-   			<property name="user" value="root" />
-   			<property name="password" value="root" />
-     		<property name="minPoolSize" value="1" />
-   			<property name="maxPoolSize" value="20" />
-   			<property name="maxIdleTime" value="1800" />
-   			<property name="acquireIncrement" value="2" />
-  		 	<property name="maxStatements" value="0" />
-   			<property name="initialPoolSize" value="2" />
-   			<property name="idleConnectionTestPeriod" value="1800" />
-   			<property name="acquireRetryAttempts" value="30" />
-   			<property name="breakAfterAcquireFailure" value="true" />
-   			<property name="testConnectionOnCheckout" value="false" />
-		</bean>
-    	
-    	<!-- 数据库配置SqlSessionFactoryBean -->
+
+    <!-- 数据库连接池 :dataSource -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"><!-- destroy-method="close" -->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl"
+                  value="jdbc:mysql://localhost:3306/testunitils?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="user" value="root"/>
+        <property name="password" value="root"/>
+        <property name="minPoolSize" value="1"/>
+        <property name="maxPoolSize" value="20"/>
+        <property name="maxIdleTime" value="1800"/>
+        <property name="acquireIncrement" value="2"/>
+        <property name="maxStatements" value="0"/>
+        <property name="initialPoolSize" value="2"/>
+        <property name="idleConnectionTestPeriod" value="1800"/>
+        <property name="acquireRetryAttempts" value="30"/>
+        <property name="breakAfterAcquireFailure" value="true"/>
+        <property name="testConnectionOnCheckout" value="false"/>
+    </bean>
+
+    <!-- 数据库配置SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.dao" />
+        <property name="basePackage" value="com.dao"/>
     </bean>
 
-    <bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
     </bean>
-    	
-    	<!-- 如果存在一个事务，则支持当前事务。如果没有事务则开启 -->
+
+    <!-- 如果存在一个事务，则支持当前事务。如果没有事务则开启 -->
     <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
-        <property name="transactionManager" ref="transactionManager" />
+        <property name="transactionManager" ref="transactionManager"/>
     </bean>
 
-	<context:component-scan base-package="com.service.impl">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
+    <context:component-scan base-package="com.service.impl">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
     <!-- 以AspectJ方式 定义 事务 -->
-    <aop:config proxy-target-class="true" >
-        <aop:advisor pointcut="execution(* com.service..*.*(..))"  advice-ref="txAdvice" order="2"/>
+    <aop:config proxy-target-class="true">
+        <aop:advisor pointcut="execution(* com.service..*.*(..))" advice-ref="txAdvice" order="2"/>
     </aop:config>
-    
-     <!-- 配置事务传播特性:如果存在一个事务，则支持当前事务。如果没有事务则开启：REQUIRED -->
+
+    <!-- 配置事务传播特性:如果存在一个事务，则支持当前事务。如果没有事务则开启：REQUIRED -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
-            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
-            <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
-            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception" />
-            <tx:method name="exec*" propagation="REQUIRED" rollback-for="Exception" />
-            <tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception" />
-            <tx:method name="merge*" propagation="REQUIRED" rollback-for="Exception" />
-            <tx:method name="batch*" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="exec*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="merge*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="batch*" propagation="REQUIRED" rollback-for="Exception"/>
 
-            <tx:method name="add*Atom" propagation="REQUIRES_NEW" rollback-for="Exception" />
-            <tx:method name="update*Atom" propagation="REQUIRES_NEW" rollback-for="Exception" />
-            <tx:method name="save*Atom" propagation="REQUIRES_NEW" rollback-for="Exception" />
-            <tx:method name="delete*Atom" propagation="REQUIRES_NEW" rollback-for="Exception" />
-            <tx:method name="*Atom" propagation="REQUIRES_NEW" rollback-for="Exception" />
+            <tx:method name="add*Atom" propagation="REQUIRES_NEW" rollback-for="Exception"/>
+            <tx:method name="update*Atom" propagation="REQUIRES_NEW" rollback-for="Exception"/>
+            <tx:method name="save*Atom" propagation="REQUIRES_NEW" rollback-for="Exception"/>
+            <tx:method name="delete*Atom" propagation="REQUIRES_NEW" rollback-for="Exception"/>
+            <tx:method name="*Atom" propagation="REQUIRES_NEW" rollback-for="Exception"/>
 
-            <tx:method name="get*" propagation="SUPPORTS" rollback-for="Exception" />
-            <tx:method name="count*" propagation="SUPPORTS" rollback-for="Exception" />
-            <tx:method name="*" propagation="SUPPORTS" read-only="true" /> 
+            <tx:method name="get*" propagation="SUPPORTS" rollback-for="Exception"/>
+            <tx:method name="count*" propagation="SUPPORTS" rollback-for="Exception"/>
+            <tx:method name="*" propagation="SUPPORTS" read-only="true"/>
         </tx:attributes>
     </tx:advice>
-    	
+
 </beans>

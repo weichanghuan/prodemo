@@ -4,10 +4,12 @@ import com.po.SysRoleResource;
 import com.service.SysRoleResourceService;
 import com.utils.ImportExcelUtil;
 import com.utils.JSONUtil;
+
 import java.io.File;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +39,7 @@ public class FileUpLoad {
     @RequestMapping("/importPicFile.s")
     @ResponseBody
     public String uploadfileAjax(HttpServletRequest request, @RequestParam(value = "file") CommonsMultipartFile file, String pname,
-            HttpServletResponse response) throws Exception {
+                                 HttpServletResponse response) throws Exception {
         // 注意一个文件对应一个CommonsMultipartFile类的对象
         /*
          * System.out.println("获取上传文件的名称:"+file.getOriginalFilename());
@@ -85,7 +87,7 @@ public class FileUpLoad {
     @RequestMapping("/importPicFile2.s")
     @ResponseBody
     public String uploadfileAjax2(HttpServletRequest request, @RequestParam(value = "file") CommonsMultipartFile file, String pname,
-            HttpServletResponse response) throws Exception {
+                                  HttpServletResponse response) throws Exception {
         DiskFileItem fi = (DiskFileItem) file.getFileItem();
         File file1 = fi.getStoreLocation();
         List<List<Object>> readExcel = ImportExcelUtil.readExcel(file1);

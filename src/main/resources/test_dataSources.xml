@@ -7,5 +7,5 @@
 	http://www.wch.com/schema/dataSources
 		http://www.wch.com/schema/dataSources/dataSources.xsd">
 
-    <wch:datasource id="dataSources" url="jdbc:mysql://localhost:3309/demodb" userName="root" passWord="root" />
+    <wch:datasource id="dataSources" url="jdbc:mysql://localhost:3309/demodb" userName="root" passWord="root"/>
 </beans>

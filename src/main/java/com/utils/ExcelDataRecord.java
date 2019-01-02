@@ -24,7 +24,7 @@ public class ExcelDataRecord {
     /**
      * getExcelHead:获取Excel头信息. <br/>
      *
-     * @return java.util.HashMap<java.lang.String,java.lang.String>
+     * @return java.util.HashMap<java.lang.String , java.lang.String>
      * @author weichanghuan
      * @date 2017/7/26 16:59
      */

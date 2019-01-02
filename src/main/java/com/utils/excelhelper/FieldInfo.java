@@ -26,7 +26,7 @@ public class FieldInfo {
     }
 
     public FieldInfo(String name, int order, String format, int width, String defaultValue, Method method, String mergeTo, String separator, String string,
-            int[] tags) {
+                     int[] tags) {
         this.name = name;
         this.order = order;
         this.format = format;

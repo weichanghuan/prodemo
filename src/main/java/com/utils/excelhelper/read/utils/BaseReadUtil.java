@@ -2,6 +2,7 @@ package com.utils.excelhelper.read.utils;
 
 import com.utils.excelhelper.FieldInfo;
 import com.utils.excelhelper.annotation.ExcelField;
+
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.POIXMLDocument;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -265,8 +267,7 @@ public class BaseReadUtil {
     /**
      * 处理excel到List(用于简单导入，不返回具体实体的列表／简单导入使用)
      *
-     * @param inputStream
-     *            文件流
+     * @param inputStream 文件流
      * @return 数据列表
      */
     public static List<Map<String, String>> read(InputStream inputStream) throws IOException, InvalidFormatException {
@@ -321,8 +322,7 @@ public class BaseReadUtil {
     /**
      * 根据HSSFCell类型设置数据（简单导入使用）
      *
-     * @param cell
-     *            单元格
+     * @param cell 单元格
      * @return 处理后的值
      */
     private static String getCellFormatValue(Cell cell) {

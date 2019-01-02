@@ -85,8 +85,8 @@ public class TestAopPointcut extends StaticMethodMatcherPointcut implements Clas
 
     @Override
     public boolean matches(Method method, Class<?> targetClass) {
-        logger.info("method is {}",method.getName());
-        logger.info("targetClass is {}",targetClass.getName());
+        logger.info("method is {}", method.getName());
+        logger.info("targetClass is {}", targetClass.getName());
         return true;
     }
 

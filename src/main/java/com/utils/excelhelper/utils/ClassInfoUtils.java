@@ -2,6 +2,7 @@ package com.utils.excelhelper.utils;
 
 import com.utils.excelhelper.FieldInfo;
 import com.utils.excelhelper.annotation.ExcelField;
+
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -46,8 +48,7 @@ public class ClassInfoUtils {
     /**
      * 获取Object类型，根据类型常用情况，String类型先判断，然后是Integer等
      *
-     * @param object
-     *            对象
+     * @param object 对象
      * @return excel对应的类型
      */
     public static byte getExcelTypeByObj(Object object) {
@@ -91,11 +92,9 @@ public class ClassInfoUtils {
     /**
      * 根据类返回field信息列表
      *
-     * @param clazz
-     *            类
+     * @param clazz 类
      * @return field信息列表
-     * @throws IntrospectionException
-     *             内省异常
+     * @throws IntrospectionException 内省异常
      */
     @SuppressWarnings("rawtypes")
     public static List<FieldInfo> getFieldInfoList(Class clazz) throws IntrospectionException {
@@ -133,8 +132,7 @@ public class ClassInfoUtils {
     /**
      * 根据order进行排序
      *
-     * @param fieldInfoList
-     *            field信息列表
+     * @param fieldInfoList field信息列表
      */
     private static void sortList(List<FieldInfo> fieldInfoList) {
         Collections.sort(fieldInfoList, new Comparator<FieldInfo>() {

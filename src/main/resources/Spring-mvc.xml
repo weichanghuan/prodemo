@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc 
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
@@ -12,30 +12,30 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<!-- 扫描所有接口响应Class -->
-	<context:component-scan base-package="com.controller.handler" use-default-filters="false">
-		<context:include-filter type="annotation"
-			expression="com.controller.ProcessorControllerAnnotation" />
-	</context:component-scan>
+    <!-- 扫描所有接口响应Class -->
+    <context:component-scan base-package="com.controller.handler" use-default-filters="false">
+        <context:include-filter type="annotation"
+                                expression="com.controller.ProcessorControllerAnnotation"/>
+    </context:component-scan>
 
-	<!-- 同时开启json格式的支持 -->
-	<mvc:annotation-driven />
-	
-	 <!-- 对静态资源文件的访问 -->
+    <!-- 同时开启json格式的支持 -->
+    <mvc:annotation-driven/>
+
+    <!-- 对静态资源文件的访问 -->
     <mvc:default-servlet-handler/>
-	<!-- spring mvc 扫描所有的controller 但是不扫描service -->
-	<context:component-scan base-package="com.controller"/>
+    <!-- spring mvc 扫描所有的controller 但是不扫描service -->
+    <context:component-scan base-package="com.controller"/>
 
-	
-	<!-- （默认）jsp视图解析器对模型视图名称的解析，即在模型视图名称添加前后缀 -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" /><!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑 -->
-		 <property name="order" value="2"/>
-	</bean>
-	
-	<!-- 设置freeMarker的配置文件路径 -->
+
+    <!-- （默认）jsp视图解析器对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/><!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑 -->
+        <property name="order" value="2"/>
+    </bean>
+
+    <!-- 设置freeMarker的配置文件路径 -->
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/ftl/"/>
         <property name="freemarkerVariables">
@@ -79,7 +79,7 @@
     </bean>
 
 
- <!--多部分文件上传 -->
+    <!--多部分文件上传 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 设置上传文件的最大尺寸为10MB -->
         <property name="maxUploadSize" value="1048576000"/>

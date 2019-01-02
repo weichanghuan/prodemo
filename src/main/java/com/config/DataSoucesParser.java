@@ -25,10 +25,10 @@ public class DataSoucesParser implements BeanDefinitionParser {
         String passWord = element.getAttribute("passWord");
 
         RootBeanDefinition def = new RootBeanDefinition(DataSouces.class);
-        def.getPropertyValues().addPropertyValue("id",id);
-        def.getPropertyValues().addPropertyValue("url",url);
-        def.getPropertyValues().addPropertyValue("userName",userName);
-        def.getPropertyValues().addPropertyValue("passWord",passWord);
+        def.getPropertyValues().addPropertyValue("id", id);
+        def.getPropertyValues().addPropertyValue("url", url);
+        def.getPropertyValues().addPropertyValue("userName", userName);
+        def.getPropertyValues().addPropertyValue("passWord", passWord);
         parserContext.getRegistry().registerBeanDefinition(DATE_SOURCES, def);
 
     }

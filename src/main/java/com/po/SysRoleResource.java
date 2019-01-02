@@ -30,7 +30,6 @@ public class SysRoleResource {
      * This method returns the value of the database column sys_role_resource.id
      *
      * @return the value of sys_role_resource.id
-     *
      * @mbggenerated Sun Dec 10 18:42:40 CST 2017
      */
     public Integer getId() {
@@ -42,7 +41,6 @@ public class SysRoleResource {
      * This method sets the value of the database column sys_role_resource.id
      *
      * @param id the value for sys_role_resource.id
-     *
      * @mbggenerated Sun Dec 10 18:42:40 CST 2017
      */
     public void setId(Integer id) {
@@ -54,7 +52,6 @@ public class SysRoleResource {
      * This method returns the value of the database column sys_role_resource.role_id
      *
      * @return the value of sys_role_resource.role_id
-     *
      * @mbggenerated Sun Dec 10 18:42:40 CST 2017
      */
     public Integer getRoleId() {
@@ -66,7 +63,6 @@ public class SysRoleResource {
      * This method sets the value of the database column sys_role_resource.role_id
      *
      * @param roleId the value for sys_role_resource.role_id
-     *
      * @mbggenerated Sun Dec 10 18:42:40 CST 2017
      */
     public void setRoleId(Integer roleId) {
@@ -78,7 +74,6 @@ public class SysRoleResource {
      * This method returns the value of the database column sys_role_resource.resource_id
      *
      * @return the value of sys_role_resource.resource_id
-     *
      * @mbggenerated Sun Dec 10 18:42:40 CST 2017
      */
     public Integer getResourceId() {
@@ -90,7 +85,6 @@ public class SysRoleResource {
      * This method sets the value of the database column sys_role_resource.resource_id
      *
      * @param resourceId the value for sys_role_resource.resource_id
-     *
      * @mbggenerated Sun Dec 10 18:42:40 CST 2017
      */
     public void setResourceId(Integer resourceId) {

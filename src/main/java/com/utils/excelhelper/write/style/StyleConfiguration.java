@@ -2,6 +2,7 @@ package com.utils.excelhelper.write.style;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormat;
@@ -145,8 +146,7 @@ public class StyleConfiguration {
     /**
      * 根据格式，创建返回样式对象
      *
-     * @param format
-     *            格式
+     * @param format 格式
      * @return 样式对象
      */
     public CellStyle getCustomFormatStyle(String format) {
@@ -189,8 +189,7 @@ public class StyleConfiguration {
     /**
      * 设置通用的对齐居中、边框等
      *
-     * @param style
-     *            样式
+     * @param style 样式
      */
     private void setCommonStyle(CellStyle style) {
         // 设置单元格居中对齐、自动换行

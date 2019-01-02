@@ -1,9 +1,11 @@
 package com.controller;
 
 import com.compoent.ApplicationContextService;
+
 import java.util.LinkedHashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -28,12 +30,9 @@ public class BaseController {
      * ajaxToDoBusiness:ajax请求. <br/>
      * 所有后缀带ajax的请求入口.<br/>
      *
-     * @param actionType
-     *            请求路径
-     * @param param
-     *            参数
-     * @param request
-     *            请求参数
+     * @param actionType 请求路径
+     * @param param      参数
+     * @param request    请求参数
      * @return java.lang.String
      * @author weichanghuan
      * @date 2017/8/25 18:43
@@ -56,10 +55,8 @@ public class BaseController {
      * urlToDoBusiness:url发送的get请求. <br/>
      * 非后缀ajax的所有请求入口.<br/>
      *
-     * @param actionType
-     *            请求路径
-     * @param request
-     *            请求参数
+     * @param actionType 请求路径
+     * @param request    请求参数
      * @return org.springframework.web.servlet.ModelAndView
      * @author weichanghuan
      * @date 2017/8/25 18:50

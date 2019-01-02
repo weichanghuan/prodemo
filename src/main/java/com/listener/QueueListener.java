@@ -3,6 +3,7 @@ package com.listener;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +18,7 @@ import org.slf4j.LoggerFactory;
  * <p>
  * Company: www.itcast.cn
  * </p>
- * 
+ *
  * @version 1.0
  */
 public class QueueListener implements MessageListener {

@@ -3,7 +3,9 @@ package com.utils.excelhelper.write.row;
 import com.utils.excelhelper.write.sheet.SheetContext;
 import com.utils.excelhelper.write.style.StyleConfiguration;
 import com.utils.excelhelper.write.workbook.WorkbookContext;
+
 import java.util.Date;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -37,8 +39,7 @@ public class RowContext {
     /**
      * 写字符串方法
      *
-     * @param text
-     *            字符串
+     * @param text 字符串
      */
     public RowContext text(String text) {
         return writeText(text, styleConfiguration.getTextStyle());
@@ -47,10 +48,8 @@ public class RowContext {
     /**
      * 写字符串方法 重载方法，支持自定义CellStyle
      *
-     * @param text
-     *            字符串
-     * @param style
-     *            样式
+     * @param text  字符串
+     * @param style 样式
      */
     public RowContext text(String text, CellStyle style) {
         return writeText(text, style);
@@ -60,8 +59,7 @@ public class RowContext {
     /**
      * 写整数
      *
-     * @param number
-     *            整数
+     * @param number 整数
      */
     public RowContext number(Number number) {
         return writeNumber(number, styleConfiguration.getNumberStyle());
@@ -70,10 +68,8 @@ public class RowContext {
     /**
      * 写整数 重载的方法，支持自定义CellStyle
      *
-     * @param number
-     *            整数
-     * @param style
-     *            样式
+     * @param number 整数
+     * @param style  样式
      */
     public RowContext number(Number number, CellStyle style) {
         return writeNumber(number, style);
@@ -82,8 +78,7 @@ public class RowContext {
     /**
      * 写小数
      *
-     * @param number
-     *            小数
+     * @param number 小数
      */
     public RowContext decimal(Number number) {
         return writeNumber(number, styleConfiguration.getDecimalStyle());
@@ -92,10 +87,8 @@ public class RowContext {
     /**
      * 写小数 重载的方法，支持自定义格式化
      *
-     * @param number
-     *            小数
-     * @param format
-     *            格式化
+     * @param number 小数
+     * @param format 格式化
      */
     public RowContext decimal(Number number, String format) {
         return writeNumber(number, styleConfiguration.getCustomFormatStyle(format));
@@ -104,8 +97,7 @@ public class RowContext {
     /**
      * 写日期，默认格式yyyy-MM-dd HH:mm
      *
-     * @param date
-     *            日期
+     * @param date 日期
      */
     public RowContext date(Date date) {
         return writeDate(date, styleConfiguration.getDateStyle());
@@ -114,10 +106,8 @@ public class RowContext {
     /**
      * 写日期 重载的方法，支持自定义格式化
      *
-     * @param date
-     *            日期
-     * @param format
-     *            格式化格式
+     * @param date   日期
+     * @param format 格式化格式
      */
     public RowContext date(Date date, String format) {
         return writeDate(date, styleConfiguration.getCustomFormatStyle(format));
@@ -126,10 +116,8 @@ public class RowContext {
     /**
      * 写日期 重载的方法，支持自定义CellStyle
      *
-     * @param date
-     *            日期
-     * @param style
-     *            样式
+     * @param date  日期
+     * @param style 样式
      */
     public RowContext date(Date date, CellStyle style) {
         return writeDate(date, style);
@@ -138,8 +126,7 @@ public class RowContext {
     /**
      * 写日期，默认格式yyyy/MM/dd
      *
-     * @param date
-     *            日期
+     * @param date 日期
      */
     public RowContext date8(Date date) {
         return writeDate(date, styleConfiguration.getDate8Style());
@@ -148,8 +135,7 @@ public class RowContext {
     /**
      * 写表头
      *
-     * @param header
-     *            表头字符串
+     * @param header 表头字符串
      */
     public RowContext header(String header) {
         return writeText(header, styleConfiguration.getHeaderStyle());
@@ -158,10 +144,8 @@ public class RowContext {
     /**
      * 写表头 重载方法 支持自定义CellStyle
      *
-     * @param header
-     *            表头字符串
-     * @param style
-     *            样式
+     * @param header 表头字符串
+     * @param style  样式
      */
     public RowContext header(String header, CellStyle style) {
         return writeText(header, style);
@@ -182,8 +166,7 @@ public class RowContext {
     /**
      * 跳过n个cell
      *
-     * @param offset
-     *            偏移量
+     * @param offset 偏移量
      */
     public RowContext skipCells(int offset) {
         index += offset;
@@ -193,10 +176,8 @@ public class RowContext {
     /**
      * 写text 2016/12/09增加判空
      *
-     * @param text
-     *            文本
-     * @param style
-     *            样式
+     * @param text  文本
+     * @param style 样式
      */
     private RowContext writeText(String text, CellStyle style) {
         createCell(1, style).setCellValue(StringUtils.isEmpty(text) ? "" : text);
@@ -207,10 +188,8 @@ public class RowContext {
     /**
      * 写number
      *
-     * @param number
-     *            数字
-     * @param style
-     *            样式
+     * @param number 数字
+     * @param style  样式
      */
     private RowContext writeNumber(Number number, CellStyle style) {
         if (number == null) {
@@ -223,10 +202,8 @@ public class RowContext {
     /**
      * 写date 2016/12/09增加判空
      *
-     * @param date
-     *            日期
-     * @param style
-     *            样式
+     * @param date  日期
+     * @param style 样式
      */
     private RowContext writeDate(Date date, CellStyle style) {
 

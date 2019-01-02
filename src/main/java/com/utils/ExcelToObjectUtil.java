@@ -11,6 +11,7 @@
 package com.utils;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -55,14 +57,10 @@ public class ExcelToObjectUtil {
      * excelToObj:excel数据转集合对象. <br/>
      * 判断excel文件版本不同流程
      *
-     * @param filePath
-     *            文件路径
-     * @param classe
-     *            反射对象
-     * @param mapped
-     *            头信息集合
-     * @param headRowNum
-     *            头信息行数
+     * @param filePath   文件路径
+     * @param classe     反射对象
+     * @param mapped     头信息集合
+     * @param headRowNum 头信息行数
      * @retu rn java.util.List<T>
      * @author bin.li
      * @date 2017/8/8 18:22
@@ -82,14 +80,10 @@ public class ExcelToObjectUtil {
      * xlsToObj:excel对象转对象. <br/>
      * 支持不同版本的excel格式.<br/>
      *
-     * @param wb
-     *            excel工作区对象
-     * @param classe
-     *            要解析成的对象
-     * @param mapped
-     *            对象属性和excle表中的字段的映射关系 key为Excel表中的字段，value为classe中对应的属性名称
-     * @param headRowNum
-     *            头信息行数
+     * @param wb         excel工作区对象
+     * @param classe     要解析成的对象
+     * @param mapped     对象属性和excle表中的字段的映射关系 key为Excel表中的字段，value为classe中对应的属性名称
+     * @param headRowNum 头信息行数
      * @return java.util.List<T>
      * @author bin.li
      * @date 2017/9/22 13:17
@@ -101,14 +95,10 @@ public class ExcelToObjectUtil {
     /**
      * excelToObj:解析excel中的字段成对象. <br/>
      *
-     * @param workbook
-     *            excel对象
-     * @param classe
-     *            要解析成的对象
-     * @param mapped
-     *            对象属性和excle表中的字段的映射关系 key为Excel表中的字段，value为classe中对应的属性名称
-     * @param headRowNum
-     *            头信息行数
+     * @param workbook   excel对象
+     * @param classe     要解析成的对象
+     * @param mapped     对象属性和excle表中的字段的映射关系 key为Excel表中的字段，value为classe中对应的属性名称
+     * @param headRowNum 头信息行数
      * @return java.util.List<T> 泛型
      * @author bin.li
      * @date 2017/7/26 8:40
@@ -135,12 +125,9 @@ public class ExcelToObjectUtil {
     /**
      * createObjs:生成Excel表中的属性字段和对象属性的映射关系. <br/>
      *
-     * @param list
-     *            excel数据集合
-     * @param sheet
-     *            excel表格
-     * @param classe
-     *            要解析成的对象
+     * @param list   excel数据集合
+     * @param sheet  excel表格
+     * @param classe 要解析成的对象
      * @return void
      * @author bin.li
      * @date 2017/7/26 8:43
@@ -170,12 +157,9 @@ public class ExcelToObjectUtil {
     /**
      * createFieldMapped:生成对象，并读取Excel表中的字段给对象设置相应属性，并添加到list中. <br/>
      *
-     * @param sheet
-     *            excel表格
-     * @param mapped
-     *            对象属性和excle表中的字段的映射关系
-     * @param headRowNum
-     *            头信息行数
+     * @param sheet      excel表格
+     * @param mapped     对象属性和excle表中的字段的映射关系
+     * @param headRowNum 头信息行数
      * @return void
      * @author bin.li
      * @date 2017/7/26 8:45
@@ -246,14 +230,10 @@ public class ExcelToObjectUtil {
     /**
      * setObjField:根据映射关系，给属性设置值. <br/>
      *
-     * @param obj
-     *            对象
-     * @param classe
-     *            要解析成的对象
-     * @param key
-     *            对应属性key
-     * @param cell
-     *            单元格
+     * @param obj    对象
+     * @param classe 要解析成的对象
+     * @param key    对应属性key
+     * @param cell   单元格
      * @return void
      * @author bin.li
      * @date 2017/7/26 8:47
@@ -281,10 +261,8 @@ public class ExcelToObjectUtil {
     /**
      * convertValue:把cell的value转换成和对象一样的属性类型. <br/>
      *
-     * @param field
-     *            字段属性
-     * @param cell
-     *            单元格
+     * @param field 字段属性
+     * @param cell  单元格
      * @return java.lang.Object
      * @author bin.li
      * @date 2017/7/26 8:48
@@ -392,8 +370,7 @@ public class ExcelToObjectUtil {
     /**
      * getCellValue:从cell中获取Str值. <br/>
      *
-     * @param cell
-     *            单元格
+     * @param cell 单元格
      * @return java.lang.String
      * @author bin.li
      * @date 2017/7/26 8:49

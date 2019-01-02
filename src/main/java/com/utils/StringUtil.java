@@ -24,9 +24,8 @@ public class StringUtil {
 
     /**
      * 判断一个对象是否是空. 如果是空返回true 如果对象是string类型，调用isEmpty()
-     * 
-     * @param object
-     *            Object
+     *
+     * @param object Object
      * @return boolean
      */
     public static boolean isNull(final Object object) {
@@ -38,9 +37,8 @@ public class StringUtil {
 
     /**
      * Checks if string is null or empty.
-     * 
-     * @param value
-     *            The string to be checked
+     *
+     * @param value The string to be checked
      * @return True if string is null or empty, otherwise false.
      */
     public static boolean isEmpty(final String value) {
@@ -49,11 +47,9 @@ public class StringUtil {
 
     /**
      * 把一个参数变成固定程度，长度不足用0补充. 如果原长度超过要求长度，将原长度直接返回.
-     * 
-     * @param value
-     *            原参数值
-     * @param len
-     *            参数需要的长度.
+     *
+     * @param value 原参数值
+     * @param len   参数需要的长度.
      * @return String
      */
     public static String fillZero(final String value, int len) {
@@ -73,9 +69,8 @@ public class StringUtil {
 
     /**
      * 返回对数据位的校验.
-     * 
-     * @param sourceValue
-     *            String
+     *
+     * @param sourceValue String
      * @return int
      */
     public static int getValiateCode(final String sourceValue) {
@@ -91,11 +86,10 @@ public class StringUtil {
     /**
      * Converts <code>null</code> to empty string, otherwise returns it
      * directly.
-     * 
-     * @param string
-     *            The nullable string
+     *
+     * @param string The nullable string
      * @return empty string if passed in string is null, or original string
-     *         without any change
+     * without any change
      */
     public static String null2String(Object obj) {
         return obj == null ? "" : obj.toString();
@@ -173,7 +167,7 @@ public class StringUtil {
 
     /**
      * 比较两个字符串是否相等. 如果都是空相等.
-     * 
+     *
      * @param value1
      * @param value2
      * @return
@@ -229,7 +223,7 @@ public class StringUtil {
     }
 
     /***
-     * 
+     *
      * @param s
      * @param width
      * @return
@@ -255,7 +249,7 @@ public class StringUtil {
 
     /***
      * 定长数字类型处理
-     * 
+     *
      * @param num
      * @param width
      * @return
@@ -286,7 +280,7 @@ public class StringUtil {
 
     /**
      * 检查字符串s是否在字符串数组array中
-     * 
+     *
      * @param s
      * @param array
      * @return
@@ -309,7 +303,7 @@ public class StringUtil {
 
     /**
      * 判断一个字符串是不是数字
-     * 
+     *
      * @param str
      * @return
      */
@@ -324,7 +318,7 @@ public class StringUtil {
 
     /**
      * 检查数字n是否在数字数组array中
-     * 
+     *
      * @param n
      * @param array
      * @return
@@ -350,10 +344,8 @@ public class StringUtil {
     }
 
     /**
-     * @param regex
-     *            正则表达式字符串
-     * @param str
-     *            要匹配的字符串
+     * @param regex 正则表达式字符串
+     * @param str   要匹配的字符串
      * @return 如果str 符合 regex的正则表达式格式,返回true, 否则返回 false;
      */
     public static boolean match(String regex, String str) {
@@ -367,7 +359,7 @@ public class StringUtil {
 
     /**
      * 去除字符串中的空格、回车、换行符、制表符
-     * 
+     *
      * @param str
      * @return
      */
@@ -397,12 +389,14 @@ public class StringUtil {
         // System.out.println(replaceBlank("111 222 333 "));
     }
 
-    /** 空字符串。 */
+    /**
+     * 空字符串。
+     */
     public static final String EMPTY_STRING = "";
 
     /**
      * 比较两个字符串（大小写敏感）。
-     * 
+     *
      * <pre>
      * StringUtil.equals(null, null)   = true
      * StringUtil.equals(null, "abc")  = false
@@ -410,12 +404,9 @@ public class StringUtil {
      * StringUtil.equals("abc", "abc") = true
      * StringUtil.equals("abc", "ABC") = false
      * </pre>
-     * 
-     * @param str1
-     *            要比较的字符串1
-     * @param str2
-     *            要比较的字符串2
-     * 
+     *
+     * @param str1 要比较的字符串1
+     * @param str2 要比较的字符串2
      * @return 如果两个字符串相同，或者都是<code>null</code>，则返回<code>true</code>
      */
     public static boolean equals(String str1, String str2) {
@@ -428,7 +419,7 @@ public class StringUtil {
 
     /**
      * 比较两个字符串（大小写不敏感）。
-     * 
+     *
      * <pre>
      * StringUtil.equalsIgnoreCase(null, null)   = true
      * StringUtil.equalsIgnoreCase(null, "abc")  = false
@@ -436,12 +427,9 @@ public class StringUtil {
      * StringUtil.equalsIgnoreCase("abc", "abc") = true
      * StringUtil.equalsIgnoreCase("abc", "ABC") = true
      * </pre>
-     * 
-     * @param str1
-     *            要比较的字符串1
-     * @param str2
-     *            要比较的字符串2
-     * 
+     *
+     * @param str1 要比较的字符串1
+     * @param str2 要比较的字符串2
      * @return 如果两个字符串相同，或者都是<code>null</code>，则返回<code>true</code>
      */
     public static boolean equalsIgnoreCase(String str1, String str2) {
@@ -454,7 +442,7 @@ public class StringUtil {
 
     /**
      * 检查字符串是否是空白：<code>null</code>、空字符串<code>""</code>或只有空白字符。
-     * 
+     *
      * <pre>
      * StringUtil.isBlank(null)      = true
      * StringUtil.isBlank("")        = true
@@ -462,10 +450,8 @@ public class StringUtil {
      * StringUtil.isBlank("bob")     = false
      * StringUtil.isBlank("  bob  ") = false
      * </pre>
-     * 
-     * @param str
-     *            要检查的字符串
-     * 
+     *
+     * @param str 要检查的字符串
      * @return 如果为空白, 则返回<code>true</code>
      */
     public static boolean isBlank(String str) {
@@ -486,7 +472,7 @@ public class StringUtil {
 
     /**
      * 检查字符串是否不是空白：<code>null</code>、空字符串<code>""</code>或只有空白字符。
-     * 
+     *
      * <pre>
      * StringUtil.isBlank(null)      = false
      * StringUtil.isBlank("")        = false
@@ -494,10 +480,8 @@ public class StringUtil {
      * StringUtil.isBlank("bob")     = true
      * StringUtil.isBlank("  bob  ") = true
      * </pre>
-     * 
-     * @param str
-     *            要检查的字符串
-     * 
+     *
+     * @param str 要检查的字符串
      * @return 如果为空白, 则返回<code>true</code>
      */
     public static boolean isNotBlank(String str) {
@@ -518,7 +502,7 @@ public class StringUtil {
 
     /**
      * 检查字符串是否不是<code>null</code>和空字符串<code>""</code>。
-     * 
+     *
      * <pre>
      * StringUtil.isEmpty(null)      = false
      * StringUtil.isEmpty("")        = false
@@ -526,10 +510,8 @@ public class StringUtil {
      * StringUtil.isEmpty("bob")     = true
      * StringUtil.isEmpty("  bob  ") = true
      * </pre>
-     * 
-     * @param str
-     *            要检查的字符串
-     * 
+     *
+     * @param str 要检查的字符串
      * @return 如果不为空, 则返回<code>true</code>
      */
     public static boolean isNotEmpty(String str) {
@@ -538,7 +520,7 @@ public class StringUtil {
 
     /**
      * 在字符串中查找指定字符串，并返回第一个匹配的索引值。如果字符串为<code>null</code>或未找到，则返回<code>-1</code>。
-     * 
+     *
      * <pre>
      * StringUtil.indexOf(null, *)          = -1
      * StringUtil.indexOf(*, null)          = -1
@@ -548,12 +530,9 @@ public class StringUtil {
      * StringUtil.indexOf("aabaabaa", "ab") = 1
      * StringUtil.indexOf("aabaabaa", "")   = 0
      * </pre>
-     * 
-     * @param str
-     *            要扫描的字符串
-     * @param searchStr
-     *            要查找的字符串
-     * 
+     *
+     * @param str       要扫描的字符串
+     * @param searchStr 要查找的字符串
      * @return 第一个匹配的索引值。如果字符串为<code>null</code>或未找到，则返回<code>-1</code>
      */
     public static int indexOf(String str, String searchStr) {
@@ -566,7 +545,7 @@ public class StringUtil {
 
     /**
      * 在字符串中查找指定字符串，并返回第一个匹配的索引值。如果字符串为<code>null</code>或未找到，则返回<code>-1</code>。
-     * 
+     *
      * <pre>
      * StringUtil.indexOf(null, *, *)          = -1
      * StringUtil.indexOf(*, null, *)          = -1
@@ -580,14 +559,10 @@ public class StringUtil {
      * StringUtil.indexOf("aabaabaa", "", 2)   = 2
      * StringUtil.indexOf("abc", "", 9)        = 3
      * </pre>
-     * 
-     * @param str
-     *            要扫描的字符串
-     * @param searchStr
-     *            要查找的字符串
-     * @param startPos
-     *            开始搜索的索引值，如果小于0，则看作0
-     * 
+     *
+     * @param str       要扫描的字符串
+     * @param searchStr 要查找的字符串
+     * @param startPos  开始搜索的索引值，如果小于0，则看作0
      * @return 第一个匹配的索引值。如果字符串为<code>null</code>或未找到，则返回<code>-1</code>
      */
     public static int indexOf(String str, String searchStr, int startPos) {
@@ -605,10 +580,10 @@ public class StringUtil {
 
     /**
      * 取指定字符串的子串。
-     * 
+     *
      * <p>
      * 负的索引代表从尾部开始计算。如果字符串为<code>null</code>，则返回<code>null</code>。
-     * 
+     *
      * <pre>
      * StringUtil.substring(null, *, *)    = null
      * StringUtil.substring("", * ,  *)    = "";
@@ -620,16 +595,12 @@ public class StringUtil {
      * StringUtil.substring("abc", -2, -1) = "b"
      * StringUtil.substring("abc", -4, 2)  = "ab"
      * </pre>
-     * 
+     *
      * </p>
-     * 
-     * @param str
-     *            字符串
-     * @param start
-     *            起始索引，如果为负数，表示从尾部计算
-     * @param end
-     *            结束索引（不含），如果为负数，表示从尾部计算
-     * 
+     *
+     * @param str   字符串
+     * @param start 起始索引，如果为负数，表示从尾部计算
+     * @param end   结束索引（不含），如果为负数，表示从尾部计算
      * @return 子串，如果原始串为<code>null</code>，则返回<code>null</code>
      */
     public static String substring(String str, int start, int end) {
@@ -666,7 +637,7 @@ public class StringUtil {
 
     /**
      * 检查字符串中是否包含指定的字符串。如果字符串为<code>null</code>，将返回<code>false</code>。
-     * 
+     *
      * <pre>
      * StringUtil.contains(null, *)     = false
      * StringUtil.contains(*, null)     = false
@@ -675,12 +646,9 @@ public class StringUtil {
      * StringUtil.contains("abc", "a")  = true
      * StringUtil.contains("abc", "z")  = false
      * </pre>
-     * 
-     * @param str
-     *            要扫描的字符串
-     * @param searchStr
-     *            要查找的字符串
-     * 
+     *
+     * @param str       要扫描的字符串
+     * @param searchStr 要查找的字符串
      * @return 如果找到，则返回<code>true</code>
      */
     public static boolean contains(String str, String searchStr) {
@@ -694,7 +662,7 @@ public class StringUtil {
     /**
      * 解析字符串<br>
      * 将字符串中的'{}'符号替换成具体内容
-     * 
+     *
      * @param str
      * @param params
      * @return
@@ -713,9 +681,8 @@ public class StringUtil {
 
     /**
      * 将字符串首字母大写
-     * 
-     * @param s
-     *            字符串
+     *
+     * @param s 字符串
      * @return 首字母大写后的新字符串
      */
     public static String firstUpperCase(CharSequence s) {
@@ -732,9 +699,8 @@ public class StringUtil {
 
     /**
      * 将字符串首字母小写
-     * 
-     * @param s
-     *            字符串
+     *
+     * @param s 字符串
      * @return 首字母小写后的新字符串
      */
     public static String firstLowerCase(CharSequence s) {
@@ -757,11 +723,9 @@ public class StringUtil {
      * <p>
      * 超长由pattern决定截取,例如：<code>i</code>=123456789，<code>pattern</code>=
      * "000000",则返回"456789"
-     * 
-     * @param i
-     *            数字
-     * @param pattern
-     *            模式
+     *
+     * @param i       数字
+     * @param pattern 模式
      * @return
      */
     public static String formatNumber(long i, String pattern) {
@@ -778,11 +742,9 @@ public class StringUtil {
      * <p>
      * 超长由pattern决定截取,例如：<code>num</code>=123456789，<code>pattern</code>=
      * "000000",则返回"456789"
-     * 
-     * @param num
-     *            数字字符串
-     * @param pattern
-     *            模式
+     *
+     * @param num     数字字符串
+     * @param pattern 模式
      * @return
      */
     public static String formatNumber(String num, String pattern) {
@@ -806,7 +768,7 @@ public class StringUtil {
      * 驼峰标示字符串转为下划线分割的大写字符串
      * <p>
      * 例: "custName"-->"CUST_NAME"
-     * 
+     *
      * @param source
      * @return
      */
@@ -832,7 +794,7 @@ public class StringUtil {
      * 下划线分割的字符串转为驼峰标示字符串
      * <p>
      * 例: "CUST_NAME"-->"custName","cust_name"-->"custName"
-     * 
+     *
      * @param source
      * @return
      */
@@ -853,7 +815,7 @@ public class StringUtil {
 
     /**
      * UT8字符串转换成GBK字符串
-     * 
+     *
      * @param utf8String
      * @return
      * @throws Exception
@@ -866,7 +828,7 @@ public class StringUtil {
 
     /**
      * GBK字符串转换成 UTF-8字符串
-     * 
+     *
      * @param gbkString
      * @return
      * @throws Exception
@@ -883,7 +845,7 @@ public class StringUtil {
 
     /**
      * 截取GBK字符串
-     * 
+     *
      * @param gbkString
      * @return
      * @throws Exception
@@ -904,7 +866,7 @@ public class StringUtil {
 
     /**
      * UT8字符串转换成GBK字符串
-     * 
+     *
      * @param utf8String
      * @return
      * @throws Exception
@@ -917,16 +879,16 @@ public class StringUtil {
     /**
      * LF 字符
      */
-    public static final String LF = new String(new byte[] { 0x0A });
+    public static final String LF = new String(new byte[]{0x0A});
 
     /**
      * CR 字符
      */
-    public static final String CR = new String(new byte[] { 0x0D });
+    public static final String CR = new String(new byte[]{0x0D});
 
     /**
      * 替换回车符和换行符
-     * 
+     *
      * @param str
      * @return
      */
@@ -940,9 +902,8 @@ public class StringUtil {
     }
 
     /**
-     * 
      * formatAmount:金额格式化输出
-     * 
+     *
      * @param amount
      * @return
      * @author jiong.peng
@@ -954,9 +915,8 @@ public class StringUtil {
     }
 
     /**
-     * 
      * formatVol:份额格式化输出
-     * 
+     *
      * @param vol
      * @return
      * @author jiong.peng

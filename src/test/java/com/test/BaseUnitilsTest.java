@@ -15,9 +15,8 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
  * @author 危常焕
  * @time 2017/11/28
  * @description https://github.com/newsoulbr/mokitopoc/blob/master/src/test/java/com/github/newsoulbr/mokitopoc/service/PersonServiceTest.java
- *              http://www.unitils.org/tutorial-reflectionassert.html
- *              http://blog.csdn.net/achuo/article/details/47726241
- *
+ * http://www.unitils.org/tutorial-reflectionassert.html
+ * http://blog.csdn.net/achuo/article/details/47726241
  */
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class BaseUnitilsTest {
@@ -45,9 +44,8 @@ public class BaseUnitilsTest {
 
     /**
      * 移除bean
-     * 
-     * @param beanId
-     *            bean的id
+     *
+     * @param beanId bean的id
      */
     public static void unregisterBean(String beanId) {
         beanDefinitionRegistry.removeBeanDefinition(beanId);

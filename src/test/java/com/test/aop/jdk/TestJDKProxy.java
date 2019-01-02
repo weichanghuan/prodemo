@@ -3,13 +3,13 @@ package com.test.aop.jdk;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
- * @description:(基于jdk动态代理实现aop)
  * @author Administrator
+ * @description:(基于jdk动态代理实现aop)
  * @date 2018年1月3日 下午9:30:06
  * @since JDK 1.6
  */

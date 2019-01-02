@@ -20,6 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -41,14 +42,10 @@ public class ExportExcelUtil {
     /**
      * downloadExcel:下载excel. <br/>
      *
-     * @param response
-     *            请求返回
-     * @param content
-     *            数据内容
-     * @param title
-     *            文件头标题
-     * @param fileName
-     *            文件名称
+     * @param response 请求返回
+     * @param content  数据内容
+     * @param title    文件头标题
+     * @param fileName 文件名称
      * @return void
      * @author bin.li
      * @date 2017/9/11 19:59
@@ -68,10 +65,8 @@ public class ExportExcelUtil {
     /**
      * createWorkBook:创建excel工作区. <br/>
      *
-     * @param content
-     *            数据内容
-     * @param title
-     *            头信息
+     * @param content 数据内容
+     * @param title   头信息
      * @return org.apache.poi.ss.usermodel.Workbook
      * @author bin.li
      * @date 2017/9/11 20:02
@@ -99,12 +94,9 @@ public class ExportExcelUtil {
     /**
      * exportExcel:导出excel. <br/>
      *
-     * @param response
-     *            返回结果
-     * @param os
-     *            输出流
-     * @param fileName
-     *            文件名称
+     * @param response 返回结果
+     * @param os       输出流
+     * @param fileName 文件名称
      * @return void
      * @author bin.li
      * @date 2017/9/11 20:03
@@ -149,16 +141,11 @@ public class ExportExcelUtil {
     /**
      * setStyle:设置单元格字体大小和样式. <br/>
      *
-     * @param keys
-     *            单元格数据
-     * @param wb
-     *            excel工作区
-     * @param sheet
-     *            excel表单
-     * @param cs
-     *            单元格样式1
-     * @param cs2
-     *            单元格样式2
+     * @param keys  单元格数据
+     * @param wb    excel工作区
+     * @param sheet excel表单
+     * @param cs    单元格样式1
+     * @param cs2   单元格样式2
      * @return void
      * @author bin.li
      * @date 2017/9/11 20:04
@@ -193,28 +180,20 @@ public class ExportExcelUtil {
     /**
      * generateTable:生成表格. <br/>
      *
-     * @param content
-     *            数据内容
-     * @param title
-     *            头信息
-     * @param keys
-     *            数据
-     * @param wb
-     *            工作区
-     * @param sheet
-     *            单元
-     * @param cs
-     *            单元格1
-     * @param cs2
-     *            单元格2
-     * @param start
-     *            从第几行开始
+     * @param content 数据内容
+     * @param title   头信息
+     * @param keys    数据
+     * @param wb      工作区
+     * @param sheet   单元
+     * @param cs      单元格1
+     * @param cs2     单元格2
+     * @param start   从第几行开始
      * @return void
      * @author bin.li
      * @date 2017/9/11 20:06
      */
     private static void generateTable(List<LinkedHashMap<String, Object>> content, String[] title, String[] keys, Workbook wb, Sheet sheet, CellStyle cs,
-            CellStyle cs2, int start) {
+                                      CellStyle cs2, int start) {
         // 创建第一行
         Row row = sheet.createRow(start);
         // 设置列名
@@ -239,10 +218,8 @@ public class ExportExcelUtil {
     /**
      * setAutoWith:设置单元格宽度. <br/>
      *
-     * @param keys
-     *            数据行数
-     * @param sheet
-     *            表单
+     * @param keys  数据行数
+     * @param sheet 表单
      * @return void
      * @author bin.li
      * @date 2017/9/11 20:07

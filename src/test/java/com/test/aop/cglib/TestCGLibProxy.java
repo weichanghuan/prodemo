@@ -1,6 +1,7 @@
 package com.test.aop.cglib;
 
 import java.lang.reflect.Method;
+
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -8,9 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
- * @description:(基于cglib动态代理实现aop)
  * @author Administrator
+ * @description:(基于cglib动态代理实现aop)
  * @date 2018年1月3日 下午9:30:06
  * @since JDK 1.6
  */

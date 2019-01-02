@@ -8,18 +8,16 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * 
- * @description:(文件操作工具类)
  * @author weichanghuan
+ * @description:(文件操作工具类)
  * @date 2017年10月9日 下午10:27:47
  * @since JDK 1.6
  */
 public class FileUtils {
 
     /**
-     * 
      * getFiles:(得到文件下所有的文件名)
-     * 
+     *
      * @param 文件路径
      * @return
      * @throws IOException
@@ -40,13 +38,10 @@ public class FileUtils {
     }
 
     /**
-     * 
      * deleteAll:(删除文件夹下子文件夹和文件) 若fileName为空则，删除文件夹下面所有文件
-     * 
-     * @param file
-     *            文件路径
-     * @param fileName
-     *            文件名
+     *
+     * @param file     文件路径
+     * @param fileName 文件名
      * @author weichanghuan
      * @date 2017年10月9日 下午10:33:58
      */
@@ -71,13 +66,10 @@ public class FileUtils {
     }
 
     /**
-     * 
      * deleteAll:(TODO 这里用一句话描述这个方法的作用)
-     * 
-     * @param file
-     *            文件路径
-     * @param fileNames
-     *            批量删除文件
+     *
+     * @param file      文件路径
+     * @param fileNames 批量删除文件
      * @author weichanghuan
      * @date 2017年10月9日 下午10:40:04
      */
@@ -105,11 +97,9 @@ public class FileUtils {
     }
 
     /**
-     * 
      * 删除单个文件
-     * 
-     * @param fileName
-     *            被删除的文件名
+     *
+     * @param fileName 被删除的文件名
      * @return 如果删除成功，则返回true，否则返回false
      */
     public static boolean deleteFile(String fileName) {
@@ -129,11 +119,9 @@ public class FileUtils {
     }
 
     /**
-     * 
      * 删除文件，可以删除单个文件或文件夹
-     * 
-     * @param fileName
-     *            被删除的文件名
+     *
+     * @param fileName 被删除的文件名
      * @return 如果删除成功，则返回true，否是返回false
      */
     public static boolean delFile(String fileName) {
@@ -151,11 +139,9 @@ public class FileUtils {
     }
 
     /**
-     * 
      * 删除目录及目录下的文件
-     * 
-     * @param dirName
-     *            被删除的目录所在的文件路径
+     *
+     * @param dirName 被删除的目录所在的文件路径
      * @return 如果目录删除成功，则返回true，否则返回false
      */
     public static boolean deleteDirectory(String dirName) {
@@ -207,7 +193,7 @@ public class FileUtils {
 
     /**
      * 得到文件的大小
-     * 
+     *
      * @param fileName
      * @return
      */
@@ -227,11 +213,9 @@ public class FileUtils {
 
     /**
      * 复制单个文件
-     * 
-     * @param srcFile
-     *            包含路径的源文件 如：E:/phsftp/src/abc.txt
-     * @param dirDest
-     *            目标文件目录；若文件目录不存在则自动创建 如：E:/phsftp/dest
+     *
+     * @param srcFile 包含路径的源文件 如：E:/phsftp/src/abc.txt
+     * @param dirDest 目标文件目录；若文件目录不存在则自动创建 如：E:/phsftp/dest
      * @throws IOException
      */
     public static void copyFile(String srcFile, String dirDest) {
@@ -255,11 +239,9 @@ public class FileUtils {
 
     /**
      * 复制文件夹
-     * 
-     * @param oldPath
-     *            String 源文件夹路径 如：E:/phsftp/src
-     * @param newPath
-     *            String 目标文件夹路径 如：E:/phsftp/dest
+     *
+     * @param oldPath String 源文件夹路径 如：E:/phsftp/src
+     * @param newPath String 目标文件夹路径 如：E:/phsftp/dest
      * @return boolean
      */
     public static void copyFolder(String oldPath, String newPath) {
@@ -300,9 +282,8 @@ public class FileUtils {
 
     /**
      * 创建目录
-     * 
-     * @param dir
-     *            目录
+     *
+     * @param dir 目录
      */
     public static void mkdir(String dir) {
         try {
@@ -319,11 +300,9 @@ public class FileUtils {
 
     /**
      * 移动文件到指定目录
-     * 
-     * @param oldPath
-     *            包含路径的文件名 如：E:/phsftp/src/ljq.txt
-     * @param newPath
-     *            目标文件目录 如：E:/phsftp/dest
+     *
+     * @param oldPath 包含路径的文件名 如：E:/phsftp/src/ljq.txt
+     * @param newPath 目标文件目录 如：E:/phsftp/dest
      */
     public static void moveFile(String oldPath, String newPath) {
         copyFile(oldPath, newPath);
@@ -332,11 +311,9 @@ public class FileUtils {
 
     /**
      * 移动文件到指定目录，不会删除文件夹
-     * 
-     * @param oldPath
-     *            源文件目录 如：E:/phsftp/src
-     * @param newPath
-     *            目标文件目录 如：E:/phsftp/dest
+     *
+     * @param oldPath 源文件目录 如：E:/phsftp/src
+     * @param newPath 目标文件目录 如：E:/phsftp/dest
      */
     public static void moveFiles(String oldPath, String newPath) {
         copyFolder(oldPath, newPath);
@@ -345,11 +322,9 @@ public class FileUtils {
 
     /**
      * 移动文件到指定目录，会删除文件夹
-     * 
-     * @param oldPath
-     *            源文件目录 如：E:/phsftp/src
-     * @param newPath
-     *            目标文件目录 如：E:/phsftp/dest
+     *
+     * @param oldPath 源文件目录 如：E:/phsftp/src
+     * @param newPath 目标文件目录 如：E:/phsftp/dest
      */
     public static void moveFolder(String oldPath, String newPath) {
         copyFolder(oldPath, newPath);
@@ -357,9 +332,8 @@ public class FileUtils {
     }
 
     /**
-     * 
      * renameFile:(文件重命名)
-     * 
+     *
      * @param url
      * @param new_name
      * @return
@@ -398,13 +372,10 @@ public class FileUtils {
 
     /**
      * 复制单个文件
-     * 
-     * @param srcFileName
-     *            待复制的文件名
-     * @param descFileName
-     *            目标文件名
-     * @param coverlay
-     *            如果目标文件已存在，是否覆盖
+     *
+     * @param srcFileName  待复制的文件名
+     * @param descFileName 目标文件名
+     * @param coverlay     如果目标文件已存在，是否覆盖
      * @return 如果复制成功，则返回true，否则返回false
      */
     public static boolean copyFileCover(String srcFileName, String descFileName, boolean coverlay) {

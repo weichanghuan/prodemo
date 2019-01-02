@@ -21,7 +21,7 @@ public class TestDemo2 extends BaseUnitilsTest {
     }
 
     @Test
-    @DataSet(value = { "excel\\demo.xls" })
+    @DataSet(value = {"excel\\demo.xls"})
     // 通过Unitils提供的@DataSet注解从当前测试类this.class所在的目录寻找支持DbUnit的数据集文件并进行加载。
     // 执行测试逻辑之前，会把加载的数据集先持久化到测试数据库中，
     // @ExpectedDataSet(value = {
@@ -34,6 +34,8 @@ public class TestDemo2 extends BaseUnitilsTest {
         System.err.println(selectByPrimaryKey.getRoleId());
         logger.debug(selectByPrimaryKey.getRoleId() + "");
 
-    };
+    }
+
+    ;
 
 }
